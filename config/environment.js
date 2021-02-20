@@ -24,6 +24,9 @@ module.exports = function (environment) {
     APP: {
       apiHost: 'https://conduit.productionready.io/api',
     },
+    fastboot: {
+      hostWhitelist: [/^localhost:\d+$/],
+    },
 
     'ember-cli-mirage': {
       enabled: false,

@@ -8,8 +8,8 @@
       <div class="article-preview">No articles are here... yet.</div>
     {{/each}}
     {{#if this.articles}}
-      <Pagination @total={{this.articles.meta.articlesCount}} @perPage={{10}} @current={{@page}}
-        @existingParams={{hash author=@feed tag=@tag}} />
+      <Pagination @total={{this.articles.meta.articlesCount}} @perPage={{10}} @current={{@page}} @existingParams={{hash
+        author=@feed tag=@tag}} />
     {{/if}}
   {{/if}}
 </div>

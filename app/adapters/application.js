@@ -2,8 +2,9 @@ import { errorsHashToArray } from '@ember-data/adapter/error';
 import RESTAdapter from '@ember-data/adapter/rest';
 import { inject as service } from '@ember/service';
 import ENV from 'ember-realworld/config/environment';
+import CachedShoe from 'ember-cached-shoe';
 
-export default class ApplicationAdapter extends RESTAdapter {
+export default class ApplicationAdapter extends RESTAdapter.extend(CachedShoe) {
   @service session;
 
   host = ENV.APP.apiHost;

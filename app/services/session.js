@@ -1,5 +1,6 @@
 import Service from '@ember/service';
 import { action } from '@ember/object';
+import fetch from 'fetch';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import ENV from 'ember-realworld/config/environment';
@@ -7,6 +8,7 @@ import ENV from 'ember-realworld/config/environment';
 export default class SessionService extends Service {
   @service store;
   @service session;
+  @service fastboot;
 
   @tracked token = null;
   @tracked user = null;
@@ -98,15 +100,18 @@ export default class SessionService extends Service {
   }
 
   getStoredToken() {
+    if (this.fastboot.isFastBoot) return;
     return localStorage.getItem(SessionService.STORAGE_KEY);
   }
 
   setToken(token) {
+    if (this.fastboot.isFastBoot) return;
     this.token = token;
     localStorage.setItem(SessionService.STORAGE_KEY, token);
   }
 
   removeToken() {
+    if (this.fastboot.isFastBoot) return;
     this.token = null;
     localStorage.removeItem('realworld.ember.token');
   }
