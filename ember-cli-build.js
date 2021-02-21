@@ -38,5 +38,6 @@ module.exports = function (defaults) {
         plugins: [new BundleAnalyzerPlugin()],
       },
     },
+    splitAtRoutes: ['editor', 'settings', 'register', 'login', 'articles', 'profile'],
   });
 };
