@@ -19,7 +19,7 @@ export default class ArticleModel extends Model {
   @hasMany('comment', { async: false }) comments;
 
   get safeMarkup() {
-    let markup = marked(this.body, { sanitize: true });
+    let markup = marked(this.body);
     return htmlSafe(markup);
   }
 
