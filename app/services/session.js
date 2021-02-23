@@ -2,11 +2,11 @@ import Service from '@ember/service';
 import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
+import fetch from 'fetch';
 import ENV from 'ember-realworld/config/environment';
 
 export default class SessionService extends Service {
   @service store;
-  @service session;
 
   @tracked token = null;
   @tracked user = null;
@@ -89,7 +89,7 @@ export default class SessionService extends Service {
   }
 
   async fetchUser() {
-    let { user } = await this.session.fetch('/user');
+    let { user } = await this.fetch('/user');
     this.store.pushPayload({
       users: [user],
     });
