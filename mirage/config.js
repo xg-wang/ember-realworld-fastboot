@@ -109,9 +109,9 @@ export default function () {
    * Get current user
    */
   this.get('/user', (schema, request) => {
-    const { authorization } = request.requestHeaders;
-    if (authorization) {
-      const [authType, token] = request.requestHeaders.authorization.split(' ');
+    const { Authorization } = request.requestHeaders;
+    if (Authorization) {
+      const [authType, token] = request.requestHeaders.Authorization.split(' ');
 
       if (authType === 'Token' && token) {
         const user = schema.users.findBy({ token });
