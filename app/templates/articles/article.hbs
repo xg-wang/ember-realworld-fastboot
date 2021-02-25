@@ -7,9 +7,7 @@
   </div>
   <div class="container page">
     <div class="row article-content">
-      <div class="col-md-12" data-test-article-body>
-        {{this.model.safeMarkup}}
-      </div>
+      <ArticleContent @article={{this.model}} />
     </div>
     <hr>
     <div class="article-actions">

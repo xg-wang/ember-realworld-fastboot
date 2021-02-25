@@ -1,6 +1,4 @@
 import Model, { attr, belongsTo, hasMany } from '@ember-data/model';
-import marked from 'marked';
-import { htmlSafe } from '@ember/string';
 import { inject as service } from '@ember/service';
 
 export default class ArticleModel extends Model {
@@ -17,11 +15,6 @@ export default class ArticleModel extends Model {
 
   @belongsTo('profile') author;
   @hasMany('comment', { async: false }) comments;
-
-  get safeMarkup() {
-    let markup = marked(this.body);
-    return htmlSafe(markup);
-  }
 
   loadComments() {
     return this.store.query('comment', {
