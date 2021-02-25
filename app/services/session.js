@@ -7,6 +7,7 @@ import ENV from 'ember-realworld/config/environment';
 
 export default class SessionService extends Service {
   @service store;
+  @service fastboot;
 
   @tracked token = null;
   @tracked user = null;
@@ -98,17 +99,23 @@ export default class SessionService extends Service {
   }
 
   getStoredToken() {
-    return localStorage.getItem(SessionService.STORAGE_KEY);
+    if (!this.fastboot.isFastBoot) {
+      return localStorage.getItem(SessionService.STORAGE_KEY);
+    }
   }
 
   setToken(token) {
     this.token = token;
-    localStorage.setItem(SessionService.STORAGE_KEY, token);
+    if (!this.fastboot.isFastBoot) {
+      localStorage.setItem(SessionService.STORAGE_KEY, token);
+    }
   }
 
   removeToken() {
     this.token = null;
-    localStorage.removeItem('realworld.ember.token');
+    if (!this.fastboot.isFastBoot) {
+      localStorage.removeItem('realworld.ember.token');
+    }
   }
 
   processLoginErrors(errors) {
