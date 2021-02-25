@@ -93,5 +93,9 @@
   },
   "volta": {
     "node": "14.16.0"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.17.1"
   }
 }
