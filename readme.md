@@ -6,9 +6,13 @@
 
 # Ember RealWorld example app
 
+This is the demo app for the EmberConf 2021 talk ["Fast-Track Ember with Fastboot + Embroider"](https://emberconf.com/schedule/day-1_fast-track-ember-with-fastboot--embroider), you can read slides [here](https://slides.com/suchitadoshi1987/fast-track-ember-with-fastboot-embroider).
+
+This project is forked from the [ember-realworld](https://github.com/gothinkster/ember-realworld) project.
+
 > ### Ember.js codebase containing real world examples (CRUD, auth, advanced patterns, etc) that adheres to the [RealWorld](https://github.com/gothinkster/realworld-example-apps) spec and API.
 
-### [Demo](https://ember-realworld.netlify.com/)&nbsp;&nbsp;&nbsp;&nbsp;[RealWorld](https://github.com/gothinkster/realworld)
+### [Demo](https://ember-realworld.herokuapp.com/)&nbsp;&nbsp;&nbsp;&nbsp;[RealWorld](https://github.com/gothinkster/realworld)
 
 ## Prerequisites
 
