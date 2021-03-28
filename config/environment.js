@@ -29,7 +29,7 @@ module.exports = function (environment) {
       hostWhitelist: [
         /^localhost:\d+$/,
         /^ember-realworld.herokuapp.com$/,
-        /^ember-realwo-fastboot-3o6zvz6v.herokuapp.com$/,
+        /^ember-realwo-embroider-aoh6p3m.herokuapp.com$/,
       ],
     },
 

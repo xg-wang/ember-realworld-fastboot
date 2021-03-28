@@ -1,5 +1,8 @@
 'use strict';
 
+const { Webpack } = require('@embroider/webpack');
+const path = require('path');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function (defaults) {
@@ -20,5 +23,21 @@ module.exports = function (defaults) {
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
 
-  return app.toTree();
+  return require('@embroider/compat').compatBuild(app, Webpack, {
+    staticAddonTestSupportTrees: true,
+    staticAddonTrees: true,
+    staticHelpers: true,
+    staticComponents: true,
+    packagerOptions: {
+      webpackConfig: {
+        resolve: {
+          alias: {
+            marked: path.resolve(__dirname, 'node_modules/marked/lib/marked.esm.js'),
+          },
+        },
+        plugins: [new BundleAnalyzerPlugin()],
+      },
+    },
+    splitAtRoutes: ['editor', 'settings', 'register', 'login', 'articles', 'profile'],
+  });
 };
