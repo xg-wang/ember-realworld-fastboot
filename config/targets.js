@@ -4,4 +4,5 @@ const browsers = ['last 2 Chrome versions', 'last 2 Firefox versions', 'last 2 S
 
 module.exports = {
   browsers,
+  node: 'current',
 };

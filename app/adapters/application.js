@@ -1,9 +1,11 @@
+/* eslint-disable ember/no-mixins */
 import { errorsHashToArray } from '@ember-data/adapter/error';
 import RESTAdapter from '@ember-data/adapter/rest';
+import FastbootAdapter from 'ember-data-storefront/mixins/fastboot-adapter';
 import { inject as service } from '@ember/service';
 import ENV from 'ember-realworld/config/environment';
 
-export default class ApplicationAdapter extends RESTAdapter {
+export default class ApplicationAdapter extends RESTAdapter.extend(FastbootAdapter) {
   @service session;
 
   host = ENV.APP.apiHost;

@@ -5,11 +5,14 @@ import { task } from 'ember-concurrency-decorators';
 
 export default class TagListComponent extends Component {
   @service session;
+  @service fastboot;
   @tracked tags = [];
 
   constructor() {
     super(...arguments);
-    this.loadTags.perform();
+    if (!this.fastboot.isFastBoot) {
+      this.loadTags.perform();
+    }
   }
 
   @task({ restartable: true })

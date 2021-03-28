@@ -25,6 +25,18 @@ module.exports = function (environment) {
       apiHost: 'https://conduit.productionready.io/api',
     },
 
+    fastboot: {
+      hostWhitelist: [
+        /^localhost:\d+$/,
+        /^ember-realworld.herokuapp.com$/,
+        /^ember-realwo-fastboot-3o6zvz6v.herokuapp.com$/,
+      ],
+    },
+
+    storefront: {
+      maxAge: 1, // shoebox expires 1 minutes after the fastboot server has rendered the page
+    },
+
     'ember-cli-mirage': {
       enabled: false,
     },
