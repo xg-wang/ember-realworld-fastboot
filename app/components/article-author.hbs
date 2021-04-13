@@ -1,4 +1,10 @@
-<LinkTo @route="profile" @model={{@author.id}}><img src={{@author.image}} alt={{@author.username}}></LinkTo>
+<LinkTo @route="profile" @model={{@author.id}}>
+  {{#if @author.image}}
+    <img src={{@author.image}} alt={{@author.username}} loading="lazy">
+  {{else}}
+    <img src="https://static.productionready.io/images/smiley-cyrus.jpg" alt={{@author.username}} loading="lazy">
+  {{/if}}
+</LinkTo>
 <div class="info">
   <LinkTo @route="profile" @model={{@author.id}} class="author">{{@author.id}}</LinkTo>
   <span class="date">{{format-date @updatedAt}}</span>
