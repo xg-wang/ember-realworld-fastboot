@@ -2,6 +2,7 @@ import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
 import { inject as service } from '@ember/service';
 import { task } from 'ember-concurrency-decorators';
+import { timeout } from 'ember-concurrency';
 
 export default class TagListComponent extends Component {
   @service session;
@@ -17,6 +18,8 @@ export default class TagListComponent extends Component {
 
   @task({ restartable: true })
   *loadTags() {
+    yield timeout(2000);
+
     let { tags } = yield this.session.fetch('/tags');
     this.tags = tags;
   }
