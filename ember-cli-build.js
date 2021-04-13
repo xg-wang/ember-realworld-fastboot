@@ -1,13 +1,25 @@
 'use strict';
 
-const { Webpack } = require('@embroider/webpack');
 const path = require('path');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const { Webpack } = require('@embroider/webpack');
+const purgecss = require('@fullhuman/postcss-purgecss')
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
     // Add options here
+    postcssOptions: {
+      compile: {
+        enabled: true, // defaults to true
+        browsers: ['last 2 versions'], // this will override config found in config/targets.js
+        plugins: [
+          purgecss({
+            content: ['./**/*.hbs']
+          })
+        ]
+      },
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated
